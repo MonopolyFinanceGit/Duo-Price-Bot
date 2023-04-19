@@ -12,9 +12,9 @@ console.log("Found Token - ", !!process.env.TOKEN);
 
 async function getPrice() {
   try {
-    const raw = await fetch("https://api.coinbase.com/v2/prices/eth-usd/spot");
-    const { data } = (await raw.json()) as Response;
-    return data.amount;
+    const raw = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=monopoly-layer2-duo&vs_currencies=usd");
+    const data = (await raw.json()) as Response;
+    return data.data["monopoly-layer2-duo"].usd;
   } catch (e) {
     console.error("Failed to fetch", e);
   }
@@ -50,5 +50,5 @@ main();
 //--
 
 type Response = {
-  data: { base: "ETH"; currency: "USD"; amount: string };
+  data: { 'monopoly-layer2-duo' : {usd: number} };
 };

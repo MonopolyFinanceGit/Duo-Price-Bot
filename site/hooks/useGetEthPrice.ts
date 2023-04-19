@@ -6,10 +6,10 @@ export default function useGetEthPrice() {
   useEffect(() => {
     async function getPrice() {
       const raw = await fetch(
-        "https://api.coinbase.com/v2/prices/eth-usd/spot"
+        "https://api.coingecko.com/api/v3/simple/price?ids=monopoly-layer2-duo&vs_currencies=usd"
       );
       const { data } = await raw.json();
-      setPrice(data.amount);
+      setPrice(data['monopoly-layer2-duo'].amount);
     }
 
     getPrice(); // initial call
