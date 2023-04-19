@@ -8,7 +8,7 @@ export default function useGetEthPrice() {
       const raw = await fetch(
         "https://api.coingecko.com/api/v3/simple/price?ids=monopoly-layer2-duo&vs_currencies=usd"
       );
-      const { data } = await raw.json();
+      const   data   = await raw.json();
       setPrice(data['monopoly-layer2-duo'].amount);
     }
 

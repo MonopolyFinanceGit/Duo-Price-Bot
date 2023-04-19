@@ -14,7 +14,7 @@ async function getPrice() {
   try {
     const raw = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=monopoly-layer2-duo&vs_currencies=usd");
     const data = (await raw.json()) as Response;
-    return data.data["monopoly-layer2-duo"].usd;
+    return data["monopoly-layer2-duo"].usd;
   } catch (e) {
     console.error("Failed to fetch", e);
   }
@@ -50,5 +50,6 @@ main();
 //--
 
 type Response = {
-  data: { 'monopoly-layer2-duo' : {usd: number} };
+  'monopoly-layer2-duo' : {usd: number}
 };
+ 
